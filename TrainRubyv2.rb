@@ -14,7 +14,7 @@
 # - Seat number across the compartment (e.g. 2 <-> 8)
 
 
-# setting each of the seat arrays - seat number, seat position, seat number opposite
+# setting multi-dimensional array of seat details - seat number, seat position, seat number opposite
 seat_array = [[1,"window",7],[2,"middle",8],[3,"aisle",9],[4,"aisle",10],[5,"middle",11],[6,"window",12],[7,"window",1],[8,"middle",2],[9,"aisle",3],[10,"aisle",4],[11,"middle",5],[12,"window",6]]
 # set loop count to 0
 count = 0
@@ -23,7 +23,7 @@ count = 0
 puts "Please provide seat number to check: "
 original_seat = gets.chomp.to_i
 
-# duplicate the seat variable to check_seat in order to manipulate
+# duplicate the original_seat variable to check_seat in order to manipulate
 check_seat = original_seat
 
 # subtract 12 from the seat number until we are less than or equal too 12 - this tells us which array to use to pull out intial states
@@ -35,7 +35,6 @@ end
 # create variable that we can add to the seat opposite to get the new seat opposite 
 add_to_array = count * 12
 
-
 # module to output seat details
 def seat_output(seatNumber, seat_array, add_to_array, original_seat)
     seatNumber -= 1
@@ -43,8 +42,7 @@ def seat_output(seatNumber, seat_array, add_to_array, original_seat)
 	puts "Seat number #{original_seat} is a #{seat_array[seatNumber][1]} seat and the seat opposite is #{opposite_seat}"
 end
 
-
-# this is prob the wrong way to do this - but check the check_seat variable against the seat arrays one by one and print the seat position
+# use case to iterate through each of the original seats 1 to 12
 case check_seat 
 	when 1 then seat_output(1, seat_array, add_to_array, original_seat)
 	when 2 then seat_output(2, seat_array, add_to_array, original_seat)
